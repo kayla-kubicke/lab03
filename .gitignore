@@ -1,0 +1,10 @@
+*.xml
+
+
+*.iml
+.idea/
+*.class
+
+# Excluded directory, unsure why it's here in the first place...
+# well, maybe I'll find out later. Has a bunch of .class files.
+out/
