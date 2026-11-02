@@ -51,10 +51,6 @@ public class BeeCountingStage implements AdventureStage {
                     input = this.in.readLine();
                 }
                 expectedSum += currNum;
-                // this.input is never initialized in the constructor* so it just points to null.
-                // *Or anywhere else...
-                // Needed to include input in the constructor and initialize input to an empty ArrayList.
-                // (Unsure if using an ArrayList is ideal, but I can update the object later if needed.)
                 this.input.add(input);
                 if (count < 2) {
                     System.out.println("How about now?");
@@ -89,19 +85,12 @@ public class BeeCountingStage implements AdventureStage {
      */
     private int sumInput() {
         int sum = 0;
-        for (int i = 0; i <= this.input.size(); i++) {
+        // ArrayList indexing starts at zero, thus, loop needs to stop
+        // at size() - 1 to avoid attempting to access an index that doesn't exist.
+        for (int i = 0; i < this.input.size(); i++) {
             sum += Integer.parseInt(this.input.get(i));
         }
         return sum;
     }
 
 }
-
-
-// https://www.youtube.com/watch?v=4RDv_g2NFf0
-
-// Heave ho, heave ho
-// I scrapped your data before you agreed to show
-// Don't blame me,
-// I'm just an LLM you see and this industry thrives on
-// invading your privacy.
