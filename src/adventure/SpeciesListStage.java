@@ -54,6 +54,7 @@ public class SpeciesListStage implements AdventureStage {
         this.handleResponses(REFERENCE_2);
 
         System.out.println("Well, there's nothing left here! press enter to move.");
+        // REFERENCE_3 is an empty List (type: String).
         this.handleResponses(REFERENCE_3);
     }
 
@@ -76,7 +77,10 @@ public class SpeciesListStage implements AdventureStage {
             } else {
                 user = Arrays.asList(input.toLowerCase().split(" *, *"));
             }
+            // reference is empty; bubbles up size zero causing the divide by zero error.
             double similarity = arraySimilarity(reference, user);
+            // If reference is empty, similarity is zero and reference's size is zero so the following if
+            // statement is skipped and break is hit.
             if (similarity != 1 && reference.size() != 0) {
                 long numCorrect = Math.round(similarity * reference.size());
                 System.out.println("Try again! You got " + numCorrect + " animals correct!");
@@ -91,6 +95,12 @@ public class SpeciesListStage implements AdventureStage {
      * If there is no similarity, it should return 0.
      */
     public static int arraySimilarity(List<String> listOne, List<String> listTwo) {
+        // Added if statement that returns zero if listOne is empty.
+        // https://www.youtube.com/watch?v=iMXR7w76VZU
+        if (listOne.isEmpty()) {
+            return 0;
+        }
+
         List<String> copy = new ArrayList<>(listOne);
         int similarObjects = 0;
         for (String o : listTwo) {
