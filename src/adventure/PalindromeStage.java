@@ -77,8 +77,15 @@ public class PalindromeStage implements AdventureStage {
      */
     private static IntList digitsToIntList(String s) {
         int[] a = new int[s.length()];
-        for (int i = s.length(); i > 0; i++) {
-            a[s.length() - i] = Character.getNumericValue(s.charAt(i));
+        // i needed to be decremented to avoid an infinite loop; as to say, the condition would
+        // never be met.
+        for (int i = s.length(); i > 0; i--) {
+            // Replaced i with currentIndex because, even with the fix above, the first
+            // iteration of the loop would cause a StringIndexOutOfBoundsException
+            // because the given string's length will always be one greater than the
+            // last index on a zero-indexed string.
+            int currentIndex = s.length() - i;
+            a[s.length() - i] = Character.getNumericValue(s.charAt(currentIndex));
         }
         return IntList.of(a);
     }

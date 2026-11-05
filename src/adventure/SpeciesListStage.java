@@ -96,7 +96,6 @@ public class SpeciesListStage implements AdventureStage {
      */
     public static int arraySimilarity(List<String> listOne, List<String> listTwo) {
         // Added if statement that returns zero if listOne is empty.
-        // https://www.youtube.com/watch?v=iMXR7w76VZU
         if (listOne.isEmpty()) {
             return 0;
         }
