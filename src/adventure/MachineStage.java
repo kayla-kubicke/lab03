@@ -92,6 +92,7 @@ public class MachineStage implements AdventureStage {
     }
 
     public static int mysteryMax(int a, int b) {
+        // Bitwise magic...
         int w = (b - a) >> 31;
         int z = ~(b - a) >> 31;
 
@@ -124,8 +125,11 @@ public class MachineStage implements AdventureStage {
             System.out.println("ERROR! Array lengths don't match");
             return null;
         }
+        // "If you find a bug in mysteryMax or mysteryAdd, rewrite the method entirely instead of trying to fix it."
         int[] returnArray = new int[a.length];
         for (int i = 0; i < a.length; i += 1) {
+            // mysteryMax(int a, int b) returns an array of the minimum values.
+            // ...So, I'll start there and just rewrite it per the instructions.
             int biggerValue = mysteryMax(a[i], b[i]); // NOTE: Do not step into.
             returnArray[i] = biggerValue;
         }
@@ -152,15 +156,12 @@ public class MachineStage implements AdventureStage {
      * the elementwise max is {1, 20, 5}, which sums to 26.
      */
     public static int sumOfElementwiseMax(int[] a, int[] b) {
-        // Where is/are the bug(s) located?
         int[] maxes = arrayMax(a, b);
         int sumofMaxes = arraySum(maxes);
         return sumofMaxes;
     }
 }
 
-// My two elephant ear plants just keep flowering and growing.
-// Considering repotting them, but they are already kinda big for indoor plants.
-// And kinda nervous about getting the soil ratio correct; I could easily kill them as they are picky. :/
-// Hope to find pretty pots for them one day; right now they just live in white plastic
-// containers. Love me some thrifted planters, maybe I'll get lucky and find some vintage MCM.
+// https://www.youtube.com/watch?v=dRXLYnwKL8c
+// Good album to retrain your youtube algorithm if you're
+// looking for new music.
