@@ -61,6 +61,20 @@ public class MachineStage implements AdventureStage {
 
             int machineResult = sumOfElementwiseMax(arrOne, arrTwo);
 
+            // Example given in text fails:
+            // First input: 2, 0, 10, 14
+            // Second input: -5, 5, 20, 30
+
+            // Expected output: 57
+                // Actual output: -6
+
+            // Also, the example given in the comments of sumOfElementwiseMax(int[] a, int[] b) fails:
+            // First input: 1, -10, 3
+            // Second output: 0, 20, 5
+
+            // Expected output: 26
+                // Actual output: -17
+
             System.out.println("The machine whirrs briefly before outputting a slip of paper, reading " + machineResult);
             System.out.println("Does that seem right to you?");
             System.out.println("Enter [y] if you want to move on, and anything else to try again.");
@@ -112,7 +126,7 @@ public class MachineStage implements AdventureStage {
         }
         int[] returnArray = new int[a.length];
         for (int i = 0; i < a.length; i += 1) {
-            int biggerValue = mysteryMax(a[i], b[i]);
+            int biggerValue = mysteryMax(a[i], b[i]); // NOTE: Do not step into.
             returnArray[i] = biggerValue;
         }
 
@@ -126,7 +140,7 @@ public class MachineStage implements AdventureStage {
         int i = 0;
         int sum = 0;
         while (i < x.length) {
-            sum = sum + mysteryAdd(sum, x[i]);
+            sum = sum + mysteryAdd(sum, x[i]); // NOTE: Do not step into.
             i = i + 1;
         }
         return sum;
@@ -138,8 +152,15 @@ public class MachineStage implements AdventureStage {
      * the elementwise max is {1, 20, 5}, which sums to 26.
      */
     public static int sumOfElementwiseMax(int[] a, int[] b) {
+        // Where is/are the bug(s) located?
         int[] maxes = arrayMax(a, b);
         int sumofMaxes = arraySum(maxes);
         return sumofMaxes;
     }
 }
+
+// My two elephant ear plants just keep flowering and growing.
+// Considering repotting them, but they are already kinda big for indoor plants.
+// And kinda nervous about getting the soil ratio correct; I could easily kill them as they are picky. :/
+// Hope to find pretty pots for them one day; right now they just live in white plastic
+// containers. Love me some thrifted planters, maybe I'll get lucky and find some vintage MCM.
