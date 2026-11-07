@@ -50,6 +50,7 @@ public class Puzzle {
             }
             s.nextLine();
         }
+        // Added "-32772622" to answer.txt, answer found in isCorrect(int answer).
         throw new RuntimeException("Could not find answer in " + file);
     }
 
