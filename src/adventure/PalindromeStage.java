@@ -40,8 +40,6 @@ public class PalindromeStage implements AdventureStage {
             }
 
             IntList numLst = digitsToIntList(input);
-            // Is reverseList(...) working correctly? No.
-            // https://www.youtube.com/watch?v=Gdyc7BpKic0
             IntList reversedLst = reverseList(numLst);
             // reversedLst = reversedLst.of(4, 0, 4); // Works.
 
@@ -68,9 +66,10 @@ public class PalindromeStage implements AdventureStage {
     private static IntList reverseList(IntList l) {
         IntList reversed = null;
         // Does not add the last number because of the condition statement.
-        // As to say, the last node is ignored because the remaining list is null so
-        // the loop terminates.
-        while (l.rest != null) {
+        // As to say, the last node is not added to the reversed list because the remaining list is null
+        // when the list is only a single node so the loop terminates.
+        // The condition needed to updated to see if l is equal to null.
+        while (l != null) {
             reversed = new IntList(l.first, reversed);
             l = l.rest;
         }
