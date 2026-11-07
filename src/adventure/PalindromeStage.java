@@ -40,7 +40,10 @@ public class PalindromeStage implements AdventureStage {
             }
 
             IntList numLst = digitsToIntList(input);
+            // Is reverseList(...) working correctly? No.
+            // https://www.youtube.com/watch?v=Gdyc7BpKic0
             IntList reversedLst = reverseList(numLst);
+            // reversedLst = reversedLst.of(4, 0, 4); // Works.
 
             if (numLst.equals(reversedLst)) {
                 System.out.println("Wow, nice room number!");
@@ -64,10 +67,14 @@ public class PalindromeStage implements AdventureStage {
     /** Returns a new IntList with the contents of the original IntList in reverse order.*/
     private static IntList reverseList(IntList l) {
         IntList reversed = null;
+        // Does not add the last number because of the condition statement.
+        // As to say, the last node is ignored because the remaining list is null so
+        // the loop terminates.
         while (l.rest != null) {
             reversed = new IntList(l.first, reversed);
             l = l.rest;
         }
+
         return reversed;
     }
 
