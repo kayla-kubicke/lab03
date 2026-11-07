@@ -61,20 +61,6 @@ public class MachineStage implements AdventureStage {
 
             int machineResult = sumOfElementwiseMax(arrOne, arrTwo);
 
-            // Example given in text fails:
-            // First input: 2, 0, 10, 14
-            // Second input: -5, 5, 20, 30
-
-            // Expected output: 57
-                // Actual output: -6
-
-            // Also, the example given in the comments of sumOfElementwiseMax(int[] a, int[] b) fails:
-            // First input: 1, -10, 3
-            // Second output: 0, 20, 5
-
-            // Expected output: 26
-                // Actual output: -17
-
             System.out.println("The machine whirrs briefly before outputting a slip of paper, reading " + machineResult);
             System.out.println("Does that seem right to you?");
             System.out.println("Enter [y] if you want to move on, and anything else to try again.");
@@ -92,12 +78,7 @@ public class MachineStage implements AdventureStage {
     }
 
     public static int mysteryMax(int a, int b) {
-        // Bitwise magic...
-        int w = (b - a) >> 31;
-        int z = ~(b - a) >> 31;
-
-        int max = b & w | a & z;
-        return max;
+          return Math.max(a, b);
     }
 
     public static int mysteryAdd(int a, int b) {
@@ -125,7 +106,7 @@ public class MachineStage implements AdventureStage {
             System.out.println("ERROR! Array lengths don't match");
             return null;
         }
-        // "If you find a bug in mysteryMax or mysteryAdd, rewrite the method entirely instead of trying to fix it."
+
         int[] returnArray = new int[a.length];
         for (int i = 0; i < a.length; i += 1) {
             // mysteryMax(int a, int b) returns an array of the minimum values.
@@ -144,7 +125,9 @@ public class MachineStage implements AdventureStage {
         int i = 0;
         int sum = 0;
         while (i < x.length) {
-            sum = sum + mysteryAdd(sum, x[i]); // NOTE: Do not step into.
+            // The original equation was adding the previous sum as well as the new sum returned
+            // by mysteryAdd(int a, int b).
+            sum = mysteryAdd(sum, x[i]); // NOTE: Do not step into.
             i = i + 1;
         }
         return sum;
@@ -161,7 +144,3 @@ public class MachineStage implements AdventureStage {
         return sumofMaxes;
     }
 }
-
-// https://www.youtube.com/watch?v=dRXLYnwKL8c
-// Good album to retrain your youtube algorithm if you're
-// looking for new music.
