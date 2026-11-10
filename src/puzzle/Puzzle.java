@@ -50,7 +50,7 @@ public class Puzzle {
             }
             s.nextLine();
         }
-        // Added "-32772622" to answer.txt, answer found in isCorrect(int answer).
+        // Really just needed any int inside answer.txt to avoid this exception.
         throw new RuntimeException("Could not find answer in " + file);
     }
 
@@ -66,6 +66,9 @@ public class Puzzle {
                 Hint: Use an exception breakpoint.""");
         while (r.nextInt(100) != 10) {
             guessThis += r.nextInt();
+            // Nope, that was not it... did not need to change the condition.
+            // Needed to update the int in answer.txt to equal guessThis when the exception is thrown,
+            // as noted above.
             s = LOTS_OF_STRINGS[r.nextInt(LOTS_OF_STRINGS.length + 1)];
         }
     }
@@ -109,3 +112,6 @@ public class Puzzle {
             "ground."
     };
 }
+
+// If you've never experienced this music video...
+// https://www.youtube.com/watch?v=R-FxmoVM7X4
